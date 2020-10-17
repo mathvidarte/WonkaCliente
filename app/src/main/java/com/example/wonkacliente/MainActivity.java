@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button pizza;
     private Button hotDog;
     private Button burger;
+
     UDPConection udp;
 
     @Override
@@ -40,14 +41,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        Gson gson = new Gson();
+        String json;
+        Comida food;
         switch (view.getId()) {
             case R.id.burrito:
 
-                Gson gson = new Gson();
 
-                Comida food = new Comida ("burrito");
 
-                String json = gson.toJson(food);
+                food = new Comida ("burrito");
+
+                json = gson.toJson(food);
 
                 udp.sendMessage(json);
                 Log.d("<<<<<<<<<<<<", ""+json);
@@ -56,13 +60,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.pizza:
 
+                 food = new Comida ("pizza");
+
+                json = gson.toJson(food);
+
+                udp.sendMessage(json);
+
                 break;
 
             case R.id.hotDog:
 
+                 food = new Comida ("hotdog");
+
+                json = gson.toJson(food);
+
+                udp.sendMessage(json);
                 break;
 
             case R.id.burger:
+                food = new Comida ("burger");
+
+                json = gson.toJson(food);
+
+                udp.sendMessage(json);
 
                 break;
         }
